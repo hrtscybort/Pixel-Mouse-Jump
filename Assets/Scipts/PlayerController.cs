@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         x = Input.GetAxis("Horizontal") * speed;
+        if (rb.position.y < -6) {
+            SceneManager.LoadScene("Game Over");
+        }
     }
 
     private void FixedUpdate()
